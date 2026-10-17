@@ -1,9 +1,7 @@
-KURT EZAN SAATI — iPhone PWA
+KURT EZAN SAATI - GÜNCEL SÜRÜM
 
-GitHub Pages deposunun kök dizinine şu dört dosyayı yükleyin: index.html, manifest.webmanifest, sw.js, README.txt.
+index.html, manifest.webmanifest, sw.js ve README.txt dosyalarını GitHub deposunun ana dizinine yükleyin.
 
-Özellikler: telefon uyumlu görünüm, GPS ile şehir bulma, Aladhan Diyanet hesaplama yöntemiyle namaz vakitlerini internetten alma, GPS tabanlı hava durumu, ezan test düğmesi, ses dosyası yükleme, eko modu, neon sarı saniye ve aktif vakit vurgusu.
+Özellikler: telefona uyumlu büyük saat, saniye göstergesi, üstte mod düğmeleri, altta yatay namaz vakitleri, GPS ile konum ve internetten vakit alma, hava durumu, siyah-beyaz mod, yüklenen ezan sesinde eko/yankı efekti, ezan test düğmesi.
 
-Kullanım: uygulamayı açıp GPS düğmesine basın ve konum izni verin. Hava durumu için HAVA düğmesine basın. Kendi ezan sesinizi seçmek için SES YÜKLE, denemek için EZAN TEST düğmesini kullanın.
-
-Önemli sınırlar: GPS, namaz vakitleri ve hava durumu için internet gerekir. Hesaplanan vakitler kullanılan servis/yönteme göre değişebilir; resmi yerel takvimle kontrol edin. iOS web uygulamaları kapalı veya arka plandayken ses/alarmın tam vaktinde çalması garanti edilemez. Yüklenen ses dosyası tarayıcı oturumu boyunca tutulur; kalıcı kayıt değildir.
+Not: GPS ve vakitler internet ve konum izni gerektirir. Eko efekti yüklenen ses için çalışır. iPhone uygulama arka plandayken veya kapalıyken ezan sesini garanti edemez.
