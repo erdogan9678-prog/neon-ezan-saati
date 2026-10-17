@@ -1,12 +1,12 @@
 {
-  "name": "Kurt Ezan Saati",
-  "short_name": "Kurt Ezan",
-  "description": "GPS uyumlu neon namaz vakti saati",
+  "name": "Neon Ezan Saati",
+  "short_name": "Ezan Saati",
+  "description": "Neon ekranlı dijital saat ve namaz vakti göstergesi",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "landscape",
-  "background_color": "#02070b",
-  "theme_color": "#02070b",
+  "background_color": "#02090c",
+  "theme_color": "#02090c",
   "icons": []
 }
