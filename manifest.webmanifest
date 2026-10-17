@@ -1,0 +1,12 @@
+{
+  "name": "Neon Ezan Saati",
+  "short_name": "Ezan Saati",
+  "description": "Neon ekranlı dijital saat ve namaz vakti göstergesi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#02090c",
+  "theme_color": "#02090c",
+  "icons": []
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#02090c">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Neon Ezan Saati</title>
+<style>
+:root{--bg:#02090c;--panel:#061318;--cyan:#00eaff;--green:#00ff67;--muted:#6c9ca7;--line:#07566a}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--cyan);font-family:Arial,Helvetica,sans-serif}
+body{overflow:hidden}.app{height:100dvh;display:flex;flex-direction:column;padding:clamp(8px,1.6vw,22px);gap:clamp(6px,1vh,14px);background:radial-gradient(ellipse at 30% 35%,#04212a 0%,#02090c 60%)}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px;gap:8px}
+.brand{font-weight:900;letter-spacing:.06em;font-size:clamp(17px,2.2vw,30px);text-shadow:0 0 14px #00eaff}
+.controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+button,.btn{background:#031116;color:var(--cyan);border:1px solid var(--cyan);border-radius:10px;padding:7px 10px;font-weight:700;cursor:pointer;box-shadow:0 0 7px #00eaff33}
+button:active{transform:scale(.98)}button.on{color:var(--green);border-color:var(--green);box-shadow:0 0 12px #00ff6744}
+main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(245px,.9fr);gap:clamp(8px,1.4vw,20px);flex:1;min-height:0}
+.left{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.clockline{display:flex;align-items:baseline;justify-content:center;white-space:nowrap;gap:1vw}
+.clock{font-size:clamp(70px,15vw, min(24vw,230px));font-weight:800;line-height:1;letter-spacing:-.055em;color:var(--cyan);text-shadow:0 0 9px #00eaff,0 0 25px #00eaff77;font-variant-numeric:tabular-nums}
+.seconds{font-size:clamp(24px,5vw,70px);color:var(--green);text-shadow:0 0 14px #00ff67}
+.details{display:flex;justify-content:space-around;align-items:center;gap:10px;border-top:1px solid var(--line);margin-top:clamp(12px,3vh,30px);padding-top:14px}
+.info-label{font-size:clamp(10px,1.2vw,16px);color:#83c7d4;letter-spacing:.1em}.info-value{font-size:clamp(18px,3.8vw,52px);font-weight:800;color:var(--green);text-shadow:0 0 12px #00ff6755;margin-top:5px}
+.prayers{border:1px solid var(--line);border-radius:18px;padding:8px 12px;display:flex;flex-direction:column;justify-content:space-around;min-height:0;background:#031015bb;box-shadow:inset 0 0 20px #00eaff08}
+.prayer{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;border-bottom:1px solid #064054;padding:clamp(5px,1.1vh,12px) 4px;color:#6bdcff}
+.prayer:last-child{border:0}.prayer strong{font-size:clamp(14px,1.55vw,21px)}.prayer time{font-size:clamp(19px,2.5vw,34px);font-weight:800;font-variant-numeric:tabular-nums}
+.prayer small{display:block;color:#489db0;font-size:clamp(9px,1vw,13px);margin-top:3px}.prayer.active{border:1px solid var(--green);border-radius:10px;color:var(--green);padding-left:10px;text-shadow:0 0 10px #00ff6755;background:#00190b}
+footer{border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+footer button{font-size:clamp(10px,1vw,14px);min-height:39px}
+.status{font-size:11px;color:#78a8b1;text-align:center}
+.overlay{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:5}.overlay.show{display:flex}
+.dialog{width:min(520px,100%);max-height:90dvh;overflow:auto;background:#061318;border:1px solid var(--cyan);border-radius:18px;padding:18px;box-shadow:0 0 30px #00eaff44}
+.dialog h2{margin-top:0}.field{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:12px 0;color:#b8edf5}.field input[type=time],.field input[type=number],.field input[type=text],select{background:#02090c;color:var(--cyan);border:1px solid var(--line);padding:8px;border-radius:7px;max-width:55%}
+.note{font-size:12px;color:#9ab7bd;line-height:1.45}.close{float:right}
+@media(max-width:650px){main{grid-template-columns:1fr minmax(125px,.72fr);gap:6px}.prayers{padding:5px}.prayer{gap:4px;padding:7px 2px}.clock{font-size:clamp(56px,15vw,110px)}.seconds{font-size:clamp(20px,5vw,34px)}.brand{font-size:15px}.controls button{padding:5px 7px;font-size:10px}.details{margin-top:14px}.info-value{font-size:clamp(17px,4vw,30px)}footer{gap:5px}footer button{padding:7px}}
+@media(max-height:430px){.app{gap:4px;padding:6px}header{padding-bottom:4px}.details{margin-top:8px;padding-top:6px}.prayer{padding:3px}.prayer small{display:none}footer{padding-top:5px}footer button{min-height:30px}}
+body.light{--bg:#f3f8fa;--panel:#fff;--cyan:#007e95;--green:#008d3d;--muted:#4d747b;--line:#b1d5dc;background:#f3f8fa;color:#007e95}
+body.light .app{background:radial-gradient(ellipse at 30% 35%,#dffaff,#f3f8fa 65%)}body.light .prayers,body.light button,body.light .dialog{background:#fff}body.light .prayer small{color:#527e88}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand">ERATEC <span style="font-size:.5em;letter-spacing:.22em">İSLAMİ VAKİT SAATİ</span></div>
+<div class="controls"><button id="settingsBtn">⚙ AYAR</button><button id="tempDown">▼</button><button id="tempUp">▲ <span id="temp">25</span>°C</button><button id="themeBtn">☼ / ☾</button></div></header>
+<main><section class="left"><div class="clockline"><div class="clock" id="clock">09:40</div><div class="seconds" id="seconds">00</div></div>
+<div class="details"><div><div class="info-label">TARİH</div><div class="info-value" id="date">17.10.2026</div></div><div><div class="info-label">DURUM</div><div class="info-value" id="awakeState">AÇIK</div></div></div></section>
+<section class="prayers" id="prayers"></section></main>
+<footer><button id="azanBtn">🔊 EZAN: AÇIK</button><button id="voiceBtn">🎙 SESLİ UYARI: AÇIK</button><button id="dailyBtn">⏰ GÜNLÜK ALARM</button><button id="awakeBtn">▣ EKRAN AÇIK</button><button id="uploadBtn">♫ EZAN SESİ YÜKLE</button><input id="audioFile" type="file" accept="audio/*" hidden></footer>
+<div class="status" id="status">Ekran açık tutma ve ses özellikleri bu cihazın tarayıcı izinlerine bağlıdır.</div>
+</div>
+<div class="overlay" id="overlay"><div class="dialog"><button class="close" id="closeBtn">KAPAT ✕</button><h2>NEON SAAT AYARLARI</h2><p class="note">Vakitleri bulunduğun şehrin güvenilir namaz vakti takviminden kontrol ederek gir. Bu uygulamadaki başlangıç saatleri örnektir.</p><div id="timeFields"></div>
+<div class="field"><label for="alarmTime">Günlük alarm</label><input id="alarmTime" type="time" value="07:00"></div>
+<div class="field"><label for="city">Şehir</label><input id="city" type="text" value="Coburg" maxlength="40"></div>
+<div class="field"><label for="tempInput">Sıcaklık (°C)</label><input id="tempInput" type="number" value="25" min="-40" max="60"></div>
+<button id="saveBtn" class="on">KAYDET</button><p class="note">Not: Web uygulaması kapalıyken ezan sesinin tam vaktinde çalması garanti edilemez. En güvenilir kullanım için uygulamayı açık tut.</p></div></div>
+<audio id="azanAudio" preload="auto"></audio>
+<script>
+const names=[["İmsak","05:48"],["Güneş","07:36"],["Öğle","13:08"],["İkindi","15:54"],["Akşam","18:29"],["Yatsı","19:58"]];
+let times=names.map(x=>x[1]), azanEnabled=true, voiceEnabled=true, alarmEnabled=false, awake=true, temp=25, lastFired="", audioUrl="";
+const $=id=>document.getElementById(id);
+function renderPrayers(){ $("prayers").innerHTML=names.map((n,i)=>`<div class="prayer" id="p${i}"><div><strong>${n[0]}</strong><small>${["الإمساك","الشروق","الظهر","العصر","المغرب","العشاء"][i]}</small></div><time>${times[i]}</time></div>`).join("");}
+function tick(){const d=new Date();$("clock").textContent=d.toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit",hour12:false});$("seconds").textContent=String(d.getSeconds()).padStart(2,"0");$("date").textContent=d.toLocaleDateString("tr-TR",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"});$("temp").textContent=temp;
+let hm=d.toTimeString().slice(0,5), today=d.toDateString();document.querySelectorAll(".prayer").forEach(e=>e.classList.remove("active"));let idx=times.indexOf(hm);if(idx>=0)$("p"+idx)?.classList.add("active");
+if(azanEnabled&&times.includes(hm)&&d.getSeconds()<2&&lastFired!==today+hm){lastFired=today+hm;playAzan(names[times.indexOf(hm)][0]);}
+if(alarmEnabled&&$("alarmTime").value===hm&&d.getSeconds()<2&&lastFired!==today+"alarm"+hm){lastFired=today+"alarm"+hm;playAzan("Günlük alarm");}
+}
+function playAzan(label){if(audioUrl){$("azanAudio").currentTime=0;$("azanAudio").play().catch(()=>{});}else if(voiceEnabled&&"speechSynthesis"in window){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(label+" vakti"));}if(navigator.vibrate)navigator.vibrate([250,120,250]);$("status").textContent=label+" vakti geldi.";}
+function makeSettings(){ $("timeFields").innerHTML=names.map((n,i)=>`<div class="field"><label>${n[0]}</label><input type="time" data-i="${i}" value="${times[i]}"></div>`).join("");}
+$("settingsBtn").onclick=()=>{$("overlay").classList.add("show");makeSettings();$("tempInput").value=temp;};
+$("closeBtn").onclick=()=>$("overlay").classList.remove("show");
+$("saveBtn").onclick=()=>{document.querySelectorAll("#timeFields input").forEach(el=>times[+el.dataset.i]=el.value);temp=Math.max(-40,Math.min(60,+$("tempInput").value||25));renderPrayers();$("overlay").classList.remove("show");$("status").textContent="Ayarlar bu oturum için kaydedildi.";};
+$("themeBtn").onclick=()=>document.body.classList.toggle("light");
+$("tempUp").onclick=()=>{temp=Math.min(60,temp+1);$("temp").textContent=temp;$("tempInput").value=temp;};
+$("tempDown").onclick=()=>{temp=Math.max(-40,temp-1);$("temp").textContent=temp;$("tempInput").value=temp;};
+$("azanBtn").onclick=()=>{azanEnabled=!azanEnabled;$("azanBtn").textContent="🔊 EZAN: "+(azanEnabled?"AÇIK":"KAPALI");$("azanBtn").classList.toggle("on",azanEnabled);};
+$("voiceBtn").onclick=()=>{voiceEnabled=!voiceEnabled;$("voiceBtn").textContent="🎙 SESLİ UYARI: "+(voiceEnabled?"AÇIK":"KAPALI");$("voiceBtn").classList.toggle("on",voiceEnabled);};
+$("dailyBtn").onclick=()=>{alarmEnabled=!alarmEnabled;$("dailyBtn").classList.toggle("on",alarmEnabled);$("dailyBtn").textContent=alarmEnabled?"⏰ ALARM: AÇIK":"⏰ GÜNLÜK ALARM";if(alarmEnabled)$("overlay").classList.add("show");};
+$("awakeBtn").onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();if("wakeLock"in navigator){await navigator.wakeLock.request("screen");awake=true;$("awakeState").textContent="AÇIK";$("status").textContent="Ekran açık tutma etkin.";}else{$("status").textContent="Bu tarayıcı ekran kilidini önlemeyi desteklemiyor; ekran ayarını ayrıca değiştir."}}catch(e){$("status").textContent="Ekran kilidi izni alınamadı. Ekrana dokunarak tekrar dene."}};
+$("uploadBtn").onclick=()=>$("audioFile").click();
+$("audioFile").onchange=e=>{let f=e.target.files[0];if(f){if(audioUrl)URL.revokeObjectURL(audioUrl);audioUrl=URL.createObjectURL(f);$("azanAudio").src=audioUrl;$("status").textContent="Ezan sesi yüklendi: "+f.name+" — tarayıcı oturumu boyunca kullanılabilir.";}};
+document.addEventListener("visibilitychange",async()=>{if(document.visibilityState==="visible"&&awake&&"wakeLock"in navigator){try{await navigator.wakeLock.request("screen")}catch(e){}}});
+renderPrayers();tick();setInterval(tick,500);
+if("serviceWorker"in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script>
+</body></html>
